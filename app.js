@@ -1,11 +1,23 @@
-'use strict'
-
+//
+// Main module
+//
 const express = require('express');
-const bodyParser = require('body-parser');
-
 const app = express();
 
-const port = process.env.port || 3000; 
+const apiInfrastructureController = require('./controllers/apiInfrastructureController');
+
+const webPort = process.env.PORT || 3000; 
+
+app.use('/assets', express.static(__dirname + '/public'));
+
+app.get('/', (req, res) => {
+
+    res.send('GET \'/\' OK');
+});
+
+// Infrastructure APIs:
+// api/info/version
+apiInfrastructureController(app);
 
 
-app.listen(port);
+app.listen(webPort);
