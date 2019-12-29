@@ -4,6 +4,8 @@
 const express = require('express');
 const app = express();
 
+const startAppTime = Date.now();
+
 const apiInfrastructureController = require('./controllers/apiInfrastructureController');
 
 const webPort = process.env.PORT || 3000; 
@@ -17,7 +19,7 @@ app.get('/', (req, res) => {
 
 // Infrastructure APIs:
 // api/info/version
-apiInfrastructureController(app);
+apiInfrastructureController(app, startAppTime);
 
 
 app.listen(webPort);
