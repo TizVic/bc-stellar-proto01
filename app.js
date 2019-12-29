@@ -6,7 +6,8 @@ const app = express();
 
 const startAppTime = Date.now();
 
-const apiInfrastructureController = require('./controllers/apiInfrastructureController');
+const apiInfrastructure = require('./controllers/apiInfrastructureController');
+const apiBlockchain = require('./controllers/apiBlockchainController');
 
 const webPort = process.env.PORT || 3000; 
 
@@ -19,7 +20,10 @@ app.get('/', (req, res) => {
 
 // Infrastructure APIs:
 // api/info/version
-apiInfrastructureController(app, startAppTime);
+apiInfrastructure(app, startAppTime);
 
+// Blockchain APIs
+// ...
+apiBlockchain(app);
 
 app.listen(webPort);
